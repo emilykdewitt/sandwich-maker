@@ -1,5 +1,4 @@
 import util from '../helpers/util.js'
-import cart from './cart.js'
 
 import breads from '../components/breads.js'
 import meats from '../components/meats.js'
@@ -25,10 +24,11 @@ const makeMenu = () => {
         domString += `<h5>${ingredientTypes[catIndex]}</h5>`;
         let data = Object.entries(ingType);
         data.forEach((option) => {
+            let optionPrice = option[1].toFixed(2);
             domString += `<div class="ingredientInfo">`
-            domString +=    `<input type="checkbox" id="${option[0]}" class="btn btn-primary selectBtn"></checkbox>`;
-            domString +=    `<p>${option[0]}</p>`;
-            domString +=     `<p>(${option[1]})</p>`;
+            domString +=    `<input type="checkbox" name="${ingredientTypes[catIndex]}" id="${option[0]}" class="btn btn-primary selectBtn"></checkbox>`;
+            domString +=    `<p>${option[0]} </p>`;
+            domString +=     `<p> ($${optionPrice})</p>`;
             domString += `</div>`;
         });
         domString += `</div>`;
@@ -37,21 +37,20 @@ const makeMenu = () => {
     util.printToDom('ingredientMenu', domString);
 };
 
-const buttonClick = (e) => {
-    const buttonId = e.target.id;
-    console.log(buttonId)
-    const selectedIngredients = [];
-    allIngredients.forEach((ingType) => {
-        let data = Object.keys(ingType);
-        data.forEach((option) => {
-            if (option[0] === buttonId) {
-                selectedIngredients.push(option)
-            }
-            else return;
-        });
-    })
-    console.log(selectedIngredients);
-};
+let priceList = [];
 
-export default { makeMenu, buttonClick };
+const makePriceList = () => {
+    allIngredients.forEach((ingType) => {
+        let data = Object.entries(ingType);
+        data.forEach((option) => {
+            let object = {};
+            let key = option[0];
+            let value = option[1];
+            object[key] = value;
+            priceList.push(object);
+        })
+    })
+}
+
+export default { makeMenu, makePriceList };
 

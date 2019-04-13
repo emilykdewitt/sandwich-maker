@@ -3,6 +3,12 @@
     padding: 0;
 }
 
+.jumbotron {
+    background-image: url('../sandwich.jpg');
+    background-position: center;
+    background-repeat: repeat-x;
+}
+
 body {
     background-color: grey;
 }
@@ -29,6 +35,7 @@ body {
     flex-wrap: wrap;
     padding-bottom: 10px;
 }
+
 .ingredientInfo {
     display: flex;
     flex-direction: row;
@@ -55,4 +62,12 @@ body {
     color: white;
     background-color: black;
     border-radius: 8px;
+}
+
+h5 {
+    margin-top: 15px;
+}
+
+h3 {
+    margin-top: 20px;
 }
