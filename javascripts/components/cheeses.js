@@ -3,7 +3,7 @@ const cheeses = {
     american: 0.50,
     muenster: 1.00,
     gouda: 1.50,
-    none: 0
+    cheeseless: 0
 };
 
 const getCheeses = () => {
