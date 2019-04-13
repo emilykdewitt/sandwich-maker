@@ -3,7 +3,7 @@ const veggies = {
     tomato: 0.50,
     cucumber: 0.75,
     pickles: 0.65,
-    none: 0
+    veggieless: 0
 };
 
 const getVeggies = () => {

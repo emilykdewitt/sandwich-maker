@@ -3,7 +3,7 @@ const condiments = {
     mayonnaise: 0.50,
     oil: 0.30,
     vinegar: 0.50,
-    none: 0
+    condimentless: 0
 };
 
 const getCondiments = () => {
