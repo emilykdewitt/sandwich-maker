@@ -92,11 +92,16 @@ const buttonClick = (e) => {
     printCategory(selectedVeggies, 'veggieChoices');
     printCategory(selectedCondiments, 'condimentChoices');
 
-    let total = ingredientPrices.reduce(function(sum, order) {
-        return sum + order.amount;
-    })
-    console.log(total);
-    // printToDom('totalPrice', )
+    let total = ingredientPrices.reduce((a, b) => {return a + b}, 0);
+    let cartTotal = `$${total.toFixed(2)}`
+    printToDom('totalPrice', cartTotal);
+
+};
+
+const provideCartTotal = () => {
+    let total = ingredientPrices.reduce((a, b) => {return a + b}, 0);
+    let cartTotal = `$${total.toFixed(2)}`;
+    alert(`Your total is ${cartTotal}! Pay at the register.`)
 };
 
 const buttonEvents = () => {
@@ -125,6 +130,7 @@ const buttonEvents = () => {
     document.getElementById('oil').addEventListener('change', buttonClick);
     document.getElementById('vinegar').addEventListener('change', buttonClick);
     document.getElementById('condimentless').addEventListener('change', buttonClick);
+    document.getElementById('checkout').addEventListener('click', provideCartTotal);
 };
 
 export default { buttonEvents };
